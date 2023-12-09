@@ -5,7 +5,9 @@ services:
     image: mysql:5.7
     volumes:
       - ./db_data:/var/lib/mysql
-    restart: always
+    ports:
+      - "13306:3306"
+    restart: no
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: wordpress
@@ -20,7 +22,9 @@ services:
       - ./html:/var/www/html
     ports:
       - "8000:80"
-    restart: always
+    restart: no
+#    command:
+#      - apt-get update &&  apt-get install sendmail -y
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
