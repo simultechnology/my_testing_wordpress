@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     volumes:
       - ./db_data:/var/lib/mysql
     ports:
@@ -23,11 +23,12 @@ services:
     ports:
       - "8000:80"
     restart: no
-#    command:
-#      - apt-get update &&  apt-get install sendmail -y
+    #    command:
+    #      - apt-get update && apt-get install sendmail -y
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+
 volumes:
   db_data:
